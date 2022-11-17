@@ -18,6 +18,9 @@ if (isset($_POST)) {
             $obj = new User();
             $attributes = array('name' => $name, 'email' => $email,'phone_number'=> $phoneNumber, 'job_type'=>$jobType ,  'pass'=> $pass);
             $user = User::create($attributes);
+            //setting cookie to retrieve at time of login
+            setcookie("userEmail", $email, time() + 86400 * 30, "/");
+            setcookie("userPass", $pass, time() + 86400 * 30, "/");
             header("Location:../views/login/index.php");
         } else {
             $_SESSION['errors'] = "password doesn't match";

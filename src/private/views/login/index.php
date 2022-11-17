@@ -38,12 +38,13 @@ if(isset($_SESSION['errors'])){
                 <!-- login form -->
                 <form action="../../controllers/loginController.php" method="post">
                   <div class="form-outline form-white mb-4">
-                    <input type="email" name="email" id="email" class="form-control form-control-lg" />
+                    <!-- retrieving cookie value set at the time of registration -->
+                    <input type="email" value="<?php if(isset($_COOKIE['userEmail'])) echo $_COOKIE['userEmail']; ?>" name="email" id="email" class="form-control form-control-lg" />
                     <label class="form-label" for="email">Email</label>
                   </div>
 
                   <div class="form-outline form-white mb-4">
-                    <input type="password" name="pass" id="pass" class="form-control form-control-lg" />
+                    <input type="password" value="<?php if(isset($_COOKIE['userPass'])) echo $_COOKIE['userPass']; ?>" name="pass" id="pass" class="form-control form-control-lg" />
                     <label class="form-label" for="pass">Password</label>
                   </div>
                   <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
